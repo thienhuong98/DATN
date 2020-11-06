@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    public function user(){
+        $this->belongsTo(User::class);
+    }
+
+    public function product(){
+        $this->belongsTo(Product::class);
+    }
+
+    public function commentContents(){
+        $this->hasMany(CommentContent::class);
+    }
 }
