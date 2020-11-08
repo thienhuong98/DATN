@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResource;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -48,7 +49,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'username' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -56,7 +57,16 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $user = new User($request->only(['username', 'email', 'password']));
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        $user->save();
+        return response()->json([
+            'status' => true,
+            new UserResource($user)
+        ]);
 
     }
 }

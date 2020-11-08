@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController as LoginController;
+use App\Http\Controllers\Auth\RegisterController as RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group([
     'prefix' => 'auth',
 ], function () {
-    Route::post('register', [\App\Http\Controllers\Auth\RegisterController::class, 'register']);
-    Route::post('login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);
-    Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout']);
+    Route::post('register', [RegisterController::class, 'register']);
+});
+Route::post('login', [LoginController::class, 'login']);
+Route::group(['middleware' => 'auth.jwt'], function (){
+    Route::get('logout', [LoginController::class, 'logout']);
 });
