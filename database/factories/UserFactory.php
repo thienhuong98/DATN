@@ -26,7 +26,7 @@ class UserFactory extends Factory
 
         $date = $this->faker->dateTimeBetween('-1 day' );
         return [
-            'username' => $this->faker->userName,
+            'username' => $this->faker->unique()->userName,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => bcrypt('password'), // password
