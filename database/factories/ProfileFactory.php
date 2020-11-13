@@ -25,7 +25,6 @@ class ProfileFactory extends Factory
         return [
             'name' => $this->faker->name,
             'gender' => rand(0, 1),
-            'avatar' => $this->faker->imageUrl(250,250),
             'birthday' => $this->faker->dateTimeThisCentury->format('Y-m-d'),
             'phone' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
