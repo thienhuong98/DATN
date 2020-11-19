@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentContentsTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateCommentContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comment_contents', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
-            $table->unsignedBigInteger('comment_id');
-            $table->timestamps();
+            $table->string('url');
+            $table->unsignedBigInteger('product_id');
 
-            $table->foreign('comment_id')
+            $table->foreign('product_id')
                 ->references('id')
-                ->on('comments');
+                ->on('products');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateCommentContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_contents');
+        Schema::dropIfExists('images');
     }
 }

@@ -23,6 +23,7 @@ class CreateProfilesTable extends Migration
             $table->string('phone')->nullable();
             $table->string('facebook')->nullable();
             $table->string('language')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

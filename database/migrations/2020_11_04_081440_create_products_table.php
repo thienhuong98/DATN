@@ -21,8 +21,12 @@ class CreateProductsTable extends Migration
             $table->integer('bought');
             $table->integer('quantity');
             $table->integer('trend_count');
-            $table->string('image')->nullable();
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories');
         });
     }
 
