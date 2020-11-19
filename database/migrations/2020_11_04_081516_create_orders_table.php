@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('status');
             $table->string('ship_address');
+            $table->double('total');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
