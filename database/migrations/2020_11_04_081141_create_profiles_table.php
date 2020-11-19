@@ -24,7 +24,7 @@ class CreateProfilesTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('language')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

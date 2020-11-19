@@ -16,6 +16,7 @@ class Rating extends Model
      */
     protected $fillable = [
         'rating_star',
+        'content',
     ];
 
     public function user()

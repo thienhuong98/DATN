@@ -18,6 +18,7 @@ class CreateRatingsTable extends Migration
             $table->float('rating_star');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
+            $table->string('content');
             $table->timestamps();
 
             $table->foreign('user_id')
