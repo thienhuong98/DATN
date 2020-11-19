@@ -16,7 +16,8 @@ class Order extends Model
      */
     protected $fillable = [
         'status',
-        'ship_address'
+        'ship_address',
+        'total'
     ];
 
     public function user(){

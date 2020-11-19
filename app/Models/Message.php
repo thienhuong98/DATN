@@ -15,7 +15,7 @@ class Message extends Model
      * @var array
      */
     protected $fillable = [
-        'content',
+        'content'
     ];
 
     public function chatbox(){
